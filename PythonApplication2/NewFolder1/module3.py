@@ -34,22 +34,22 @@ control_points = np.array([
 ])
 
 # Knot vectors (uniform)
-#knots_u = [0, 0, 0, 0, 1, 2, 3, 3, 3, 3]
-#knots_v = [0, 0, 0, 0, 1, 2, 3, 3, 3, 3]
+knots_u = [0, 0, 0, 1, 2, 3, 4, 5, 5, 5]
+knots_v = [0, 0, 0, 1, 2, 3, 4, 5, 5, 5]
 
 #knots_u = [n for n in range (10)]
 #knots_v = [n for n in range (10)]
 
-knots_u = [0, 0, 0, 0, 1, 2, 3, 3, 3, 3]
-knots_v = [0, 0, 0, 0, 1, 2, 3, 3, 3, 3]
+#knots_u = [0, 0, 0, 0, 1, 2, 3, 3, 3, 3]
+#knots_v = [0, 0, 0, 0, 1, 2, 3, 3, 3, 3]
 
 # Degree of the spline
 degree_u = 3
 degree_v = 3
 
 # Sample the surface
-u_vals = np.linspace(knots_u[degree_u]+0.01, knots_u[-degree_u-1]-0.01, 30)
-v_vals = np.linspace(knots_v[degree_v]+0.01, knots_v[-degree_v-1]-0.01, 30)
+u_vals = np.linspace(knots_u[1]+0.01, knots_u[-1-1]-0.01, 30)
+v_vals = np.linspace(knots_v[1]+0.01, knots_v[-1-1]-0.01, 30)
 
 surface_points = np.array([
     b_spline_surface(u, v, control_points, knots_u, knots_v, degree_u, degree_v)
@@ -78,7 +78,7 @@ for i in range(4):
             ax.plot([control_points[i][j][0], control_points[i+1][j][0]], [control_points[i][j][1], control_points[i+1][j][1]], [control_points[i][j][2], control_points[i+1][j][2]], color='r')
         if j < 3:
             ax.plot([control_points[i][j][0], control_points[i][j+1][0]], [control_points[i][j][1], control_points[i][j+1][1]], [control_points[i][j][2], control_points[i][j+1][2]], color='r')
-plt.title('Bezier surface')
+plt.title('B-Spline surface')
 plt.xlabel('X')
 plt.ylabel('Y')
 ax.set_zlabel('Z')
